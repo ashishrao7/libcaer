@@ -33,6 +33,11 @@ static inline void commonLog(enum caer_log_level logLevel, const char *deviceStr
 
 static inline void commonLog(enum caer_log_level logLevel, const char *deviceString, uint8_t deviceLogLevel,
 	const char *format, ...) {
+	// Only log messages above the specified severity level.
+	if (logLevel > deviceLogLevel) {
+		return;
+	}
+
 	va_list argumentList;
 	va_start(argumentList, format);
 	caerLogVAFull(caerLogFileDescriptorsGetFirst(), caerLogFileDescriptorsGetSecond(), deviceLogLevel, logLevel,

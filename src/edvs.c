@@ -16,11 +16,17 @@ static void edvsEventTranslator(void *vhd, const uint8_t *buffer, size_t bytesSe
 static bool edvsSendBiases(edvsState state, int biasID);
 
 static void edvsLog(enum caer_log_level logLevel, edvsHandle handle, const char *format, ...) {
+	// Only log messages above the specified severity level.
+	uint8_t systemLogLevel = atomic_load_explicit(&handle->state.deviceLogLevel, memory_order_relaxed);
+
+	if (logLevel > systemLogLevel) {
+		return;
+	}
+
 	va_list argumentList;
 	va_start(argumentList, format);
 	caerLogVAFull(caerLogFileDescriptorsGetFirst(), caerLogFileDescriptorsGetSecond(),
-		atomic_load_explicit(&handle->state.deviceLogLevel, memory_order_relaxed), logLevel, handle->info.deviceString,
-		format, argumentList);
+		systemLogLevel, logLevel, handle->info.deviceString, format, argumentList);
 	va_end(argumentList);
 }
 
