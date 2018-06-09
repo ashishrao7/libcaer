@@ -180,7 +180,7 @@ static inline caerPoint2DEventConst caerPoint2DEventPacketGetEventConst(caerPoin
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerPoint2DEventGetTimestamp(caerPoint2DEventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -211,7 +211,7 @@ static inline void caerPoint2DEventSetTimestamp(caerPoint2DEvent event, int32_t 
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**
@@ -336,7 +336,7 @@ static inline void caerPoint2DEventSetScale(caerPoint2DEvent event, int8_t scale
  * @return X axis measurement.
  */
 static inline float caerPoint2DEventGetX(caerPoint2DEventConst event) {
-	return (leflttoh(event->x));
+	return (event->x);
 }
 
 /**
@@ -346,7 +346,7 @@ static inline float caerPoint2DEventGetX(caerPoint2DEventConst event) {
  * @param x X axis measurement.
  */
 static inline void caerPoint2DEventSetX(caerPoint2DEvent event, float x) {
-	event->x = htoleflt(x);
+	event->x = x;
 }
 
 /**
@@ -357,7 +357,7 @@ static inline void caerPoint2DEventSetX(caerPoint2DEvent event, float x) {
  * @return Y axis measurement.
  */
 static inline float caerPoint2DEventGetY(caerPoint2DEventConst event) {
-	return (leflttoh(event->y));
+	return (event->y);
 }
 
 /**
@@ -367,7 +367,7 @@ static inline float caerPoint2DEventGetY(caerPoint2DEventConst event) {
  * @param y Y axis measurement.
  */
 static inline void caerPoint2DEventSetY(caerPoint2DEvent event, float y) {
-	event->y = htoleflt(y);
+	event->y = y;
 }
 
 /**

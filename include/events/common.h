@@ -143,7 +143,7 @@ typedef const struct caer_event_packet_header *caerEventPacketHeaderConst;
  * @return the numerical event type (see 'enum caer_default_event_types').
  */
 static inline int16_t caerEventPacketHeaderGetEventType(caerEventPacketHeaderConst header) {
-	return (I16T(le16toh(U16T(header->eventType))));
+	return (header->eventType);
 }
 
 /**
@@ -163,7 +163,7 @@ static inline void caerEventPacketHeaderSetEventType(caerEventPacketHeader heade
 		return;
 	}
 
-	header->eventType = I16T(htole16(U16T(eventType)));
+	header->eventType = eventType;
 }
 
 /**
@@ -175,7 +175,7 @@ static inline void caerEventPacketHeaderSetEventType(caerEventPacketHeader heade
  * @return the numerical event source ID.
  */
 static inline int16_t caerEventPacketHeaderGetEventSource(caerEventPacketHeaderConst header) {
-	return (I16T(le16toh(U16T(U16T(header->eventSource)))));
+	return (header->eventSource);
 }
 
 /**
@@ -196,7 +196,7 @@ static inline void caerEventPacketHeaderSetEventSource(caerEventPacketHeader hea
 		return;
 	}
 
-	header->eventSource = I16T(htole16(eventSource));
+	header->eventSource = eventSource;
 }
 
 /**
@@ -208,7 +208,7 @@ static inline void caerEventPacketHeaderSetEventSource(caerEventPacketHeader hea
  * @return the event size in bytes.
  */
 static inline int32_t caerEventPacketHeaderGetEventSize(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventSize))));
+	return (header->eventSize);
 }
 
 /**
@@ -226,7 +226,7 @@ static inline void caerEventPacketHeaderSetEventSize(caerEventPacketHeader heade
 		return;
 	}
 
-	header->eventSize = I32T(htole32(U32T(eventSize)));
+	header->eventSize = eventSize;
 }
 
 /**
@@ -242,7 +242,7 @@ static inline void caerEventPacketHeaderSetEventSize(caerEventPacketHeader heade
  * @return the event timestamp offset in bytes.
  */
 static inline int32_t caerEventPacketHeaderGetEventTSOffset(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventTSOffset))));
+	return (header->eventTSOffset);
 }
 
 /**
@@ -264,7 +264,7 @@ static inline void caerEventPacketHeaderSetEventTSOffset(caerEventPacketHeader h
 		return;
 	}
 
-	header->eventTSOffset = I32T(htole32(U32T(eventTSOffset)));
+	header->eventTSOffset = eventTSOffset;
 }
 
 /**
@@ -280,7 +280,7 @@ static inline void caerEventPacketHeaderSetEventTSOffset(caerEventPacketHeader h
  * @return the packet-level timestamp overflow counter, in microseconds.
  */
 static inline int32_t caerEventPacketHeaderGetEventTSOverflow(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventTSOverflow))));
+	return (header->eventTSOverflow);
 }
 
 /**
@@ -302,7 +302,7 @@ static inline void caerEventPacketHeaderSetEventTSOverflow(caerEventPacketHeader
 		return;
 	}
 
-	header->eventTSOverflow = I32T(htole32(U32T(eventTSOverflow)));
+	header->eventTSOverflow = eventTSOverflow;
 }
 
 /**
@@ -313,7 +313,7 @@ static inline void caerEventPacketHeaderSetEventTSOverflow(caerEventPacketHeader
  * @return the number of events this packet can hold.
  */
 static inline int32_t caerEventPacketHeaderGetEventCapacity(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventCapacity))));
+	return (header->eventCapacity);
 }
 
 /**
@@ -332,7 +332,7 @@ static inline void caerEventPacketHeaderSetEventCapacity(caerEventPacketHeader h
 		return;
 	}
 
-	header->eventCapacity = I32T(htole32(U32T(eventsCapacity)));
+	header->eventCapacity = eventsCapacity;
 }
 
 /**
@@ -344,7 +344,7 @@ static inline void caerEventPacketHeaderSetEventCapacity(caerEventPacketHeader h
  * @return the number of events in this packet.
  */
 static inline int32_t caerEventPacketHeaderGetEventNumber(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventNumber))));
+	return (header->eventNumber);
 }
 
 /**
@@ -362,7 +362,7 @@ static inline void caerEventPacketHeaderSetEventNumber(caerEventPacketHeader hea
 		return;
 	}
 
-	header->eventNumber = I32T(htole32(U32T(eventsNumber)));
+	header->eventNumber = eventsNumber;
 }
 
 /**
@@ -374,7 +374,7 @@ static inline void caerEventPacketHeaderSetEventNumber(caerEventPacketHeader hea
  * @return the number of valid events in this packet.
  */
 static inline int32_t caerEventPacketHeaderGetEventValid(caerEventPacketHeaderConst header) {
-	return (I32T(le32toh(U32T(header->eventValid))));
+	return (header->eventValid);
 }
 
 /**
@@ -392,7 +392,7 @@ static inline void caerEventPacketHeaderSetEventValid(caerEventPacketHeader head
 		return;
 	}
 
-	header->eventValid = I32T(htole32(U32T(eventsValid)));
+	header->eventValid = eventsValid;
 }
 
 /**
@@ -435,7 +435,7 @@ static inline const void *caerGenericEventGetEvent(caerEventPacketHeaderConst he
  * @return the main 32 bit timestamp of this event.
  */
 static inline int32_t caerGenericEventGetTimestamp(const void *eventPtr, caerEventPacketHeaderConst headerPtr) {
-	return (I32T(le32toh(U32T(*((const int32_t *) (((const uint8_t *) eventPtr) + U64T(caerEventPacketHeaderGetEventTSOffset(headerPtr))))))));
+	return (*((const int32_t *) (((const uint8_t *) eventPtr) + U64T(caerEventPacketHeaderGetEventTSOffset(headerPtr)))));
 }
 
 /**

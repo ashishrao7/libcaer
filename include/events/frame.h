@@ -264,7 +264,7 @@ static inline caerFrameEventConst caerFrameEventPacketGetEventConst(caerFrameEve
  * @return this event's 32bit microsecond start of frame timestamp.
  */
 static inline int32_t caerFrameEventGetTSStartOfFrame(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->ts_startframe))));
+	return (event->ts_startframe);
 }
 
 /**
@@ -297,7 +297,7 @@ static inline void caerFrameEventSetTSStartOfFrame(caerFrameEvent event, int32_t
 		return;
 	}
 
-	event->ts_startframe = I32T(htole32(U32T(startFrame)));
+	event->ts_startframe = startFrame;
 }
 
 /**
@@ -313,7 +313,7 @@ static inline void caerFrameEventSetTSStartOfFrame(caerFrameEvent event, int32_t
  * @return this event's 32bit microsecond end of frame timestamp.
  */
 static inline int32_t caerFrameEventGetTSEndOfFrame(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->ts_endframe))));
+	return (event->ts_endframe);
 }
 
 /**
@@ -346,7 +346,7 @@ static inline void caerFrameEventSetTSEndOfFrame(caerFrameEvent event, int32_t e
 		return;
 	}
 
-	event->ts_endframe = I32T(htole32(U32T(endFrame)));
+	event->ts_endframe = endFrame;
 }
 
 /**
@@ -362,7 +362,7 @@ static inline void caerFrameEventSetTSEndOfFrame(caerFrameEvent event, int32_t e
  * @return this event's 32bit microsecond start of exposure timestamp.
  */
 static inline int32_t caerFrameEventGetTSStartOfExposure(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->ts_startexposure))));
+	return (event->ts_startexposure);
 }
 
 /**
@@ -395,7 +395,7 @@ static inline void caerFrameEventSetTSStartOfExposure(caerFrameEvent event, int3
 		return;
 	}
 
-	event->ts_startexposure = I32T(htole32(U32T(startExposure)));
+	event->ts_startexposure = startExposure;
 }
 
 /**
@@ -411,7 +411,7 @@ static inline void caerFrameEventSetTSStartOfExposure(caerFrameEvent event, int3
  * @return this event's 32bit microsecond end of exposure timestamp.
  */
 static inline int32_t caerFrameEventGetTSEndOfExposure(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->ts_endexposure))));
+	return (event->ts_endexposure);
 }
 
 /**
@@ -444,7 +444,7 @@ static inline void caerFrameEventSetTSEndOfExposure(caerFrameEvent event, int32_
 		return;
 	}
 
-	event->ts_endexposure = I32T(htole32(U32T(endExposure)));
+	event->ts_endexposure = endExposure;
 }
 
 /**
@@ -633,7 +633,7 @@ static inline void caerFrameEventSetColorFilter(caerFrameEvent event, enum caer_
  * @return frame X axis length.
  */
 static inline int32_t caerFrameEventGetLengthX(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->lengthX))));
+	return (event->lengthX);
 }
 
 /**
@@ -644,7 +644,7 @@ static inline int32_t caerFrameEventGetLengthX(caerFrameEventConst event) {
  * @return frame Y axis length.
  */
 static inline int32_t caerFrameEventGetLengthY(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->lengthY))));
+	return (event->lengthY);
 }
 
 /**
@@ -690,8 +690,8 @@ static inline void caerFrameEventSetLengthXLengthYChannelNumber(caerFrameEvent e
 		return;
 	}
 
-	event->lengthX = I32T(htole32(U32T(lengthX)));
-	event->lengthY = I32T(htole32(U32T(lengthY)));
+	event->lengthX = lengthX;
+	event->lengthY = lengthY;
 	CLEAR_NUMBITS32(event->info, FRAME_COLOR_CHANNELS_SHIFT, FRAME_COLOR_CHANNELS_MASK);
 	SET_NUMBITS32(event->info, FRAME_COLOR_CHANNELS_SHIFT, FRAME_COLOR_CHANNELS_MASK, channelNumber);
 }
@@ -731,7 +731,7 @@ static inline size_t caerFrameEventGetPixelsSize(caerFrameEventConst event) {
  * @return X axis position offset.
  */
 static inline int32_t caerFrameEventGetPositionX(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->positionX))));
+	return (event->positionX);
 }
 
 /**
@@ -743,7 +743,7 @@ static inline int32_t caerFrameEventGetPositionX(caerFrameEventConst event) {
  * @param positionX X axis position offset.
  */
 static inline void caerFrameEventSetPositionX(caerFrameEvent event, int32_t positionX) {
-	event->positionX = I32T(htole32(U32T(positionX)));
+	event->positionX = positionX;
 }
 
 /**
@@ -756,7 +756,7 @@ static inline void caerFrameEventSetPositionX(caerFrameEvent event, int32_t posi
  * @return Y axis position offset.
  */
 static inline int32_t caerFrameEventGetPositionY(caerFrameEventConst event) {
-	return (I32T(le32toh(U32T(event->positionY))));
+	return (event->positionY);
 }
 
 /**
@@ -768,7 +768,7 @@ static inline int32_t caerFrameEventGetPositionY(caerFrameEventConst event) {
  * @param positionY Y axis position offset.
  */
 static inline void caerFrameEventSetPositionY(caerFrameEvent event, int32_t positionY) {
-	event->positionY = I32T(htole32(U32T(positionY)));
+	event->positionY = positionY;
 }
 
 /**
@@ -802,7 +802,7 @@ static inline uint16_t caerFrameEventGetPixel(caerFrameEventConst event, int32_t
 	}
 
 	// Get pixel value at specified position.
-	return (le16toh(event->pixels[(yAddress * xLength) + xAddress]));
+	return (event->pixels[(yAddress * xLength) + xAddress]);
 }
 
 /**
@@ -835,7 +835,7 @@ static inline void caerFrameEventSetPixel(caerFrameEvent event, int32_t xAddress
 	}
 
 	// Set pixel value at specified position.
-	event->pixels[(yAddress * xLength) + xAddress] = htole16(pixelValue);
+	event->pixels[(yAddress * xLength) + xAddress] = pixelValue;
 }
 
 /**
@@ -881,7 +881,7 @@ static inline uint16_t caerFrameEventGetPixelForChannel(caerFrameEventConst even
 	}
 
 	// Get pixel value at specified position.
-	return (le16toh(event->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel]));
+	return (event->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel]);
 }
 
 /**
@@ -926,7 +926,7 @@ static inline void caerFrameEventSetPixelForChannel(caerFrameEvent event, int32_
 	}
 
 	// Set pixel value at specified position.
-	event->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel] = htole16(pixelValue);
+	event->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel] = pixelValue;
 }
 
 /**
@@ -942,7 +942,7 @@ static inline void caerFrameEventSetPixelForChannel(caerFrameEvent event, int32_
  */
 static inline uint16_t caerFrameEventGetPixelUnsafe(caerFrameEventConst event, int32_t xAddress, int32_t yAddress) {
 	// Get pixel value at specified position.
-	return (le16toh(event->pixels[(yAddress * caerFrameEventGetLengthX(event)) + xAddress]));
+	return (event->pixels[(yAddress * caerFrameEventGetLengthX(event)) + xAddress]);
 }
 
 /**
@@ -958,7 +958,7 @@ static inline uint16_t caerFrameEventGetPixelUnsafe(caerFrameEventConst event, i
 static inline void caerFrameEventSetPixelUnsafe(caerFrameEvent event, int32_t xAddress, int32_t yAddress,
 	uint16_t pixelValue) {
 	// Set pixel value at specified position.
-	event->pixels[(yAddress * caerFrameEventGetLengthX(event)) + xAddress] = htole16(pixelValue);
+	event->pixels[(yAddress * caerFrameEventGetLengthX(event)) + xAddress] = pixelValue;
 }
 
 /**
@@ -978,8 +978,7 @@ static inline uint16_t caerFrameEventGetPixelForChannelUnsafe(caerFrameEventCons
 	uint8_t channel) {
 	uint8_t channelNumber = caerFrameEventGetChannelNumber(event);
 	// Get pixel value at specified position.
-	return (le16toh(
-		event->pixels[(((yAddress * caerFrameEventGetLengthX(event)) + xAddress) * channelNumber)+ channel]));
+	return (event->pixels[(((yAddress * caerFrameEventGetLengthX(event)) + xAddress) * channelNumber)+ channel]);
 }
 
 /**
@@ -998,8 +997,7 @@ static inline void caerFrameEventSetPixelForChannelUnsafe(caerFrameEvent event, 
 	uint8_t channel, uint16_t pixelValue) {
 	uint8_t channelNumber = caerFrameEventGetChannelNumber(event);
 	// Set pixel value at specified position.
-	event->pixels[(((yAddress * caerFrameEventGetLengthX(event)) + xAddress) * channelNumber) + channel] = htole16(
-		pixelValue);
+	event->pixels[(((yAddress * caerFrameEventGetLengthX(event)) + xAddress) * channelNumber) + channel] = pixelValue;
 }
 
 /**

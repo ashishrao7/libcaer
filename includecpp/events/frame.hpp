@@ -236,7 +236,7 @@ struct FrameEvent: public caer_frame_event {
 		}
 
 		// Get pixel value at specified position.
-		return (le16toh(this->pixels[(yAddress * xLength) + xAddress]));
+		return (this->pixels[(yAddress * xLength) + xAddress]);
 	}
 
 	void setPixel(int32_t xAddress, int32_t yAddress, uint16_t pixelValue) {
@@ -252,7 +252,7 @@ struct FrameEvent: public caer_frame_event {
 		}
 
 		// Set pixel value at specified position.
-		this->pixels[(yAddress * xLength) + xAddress] = htole16(pixelValue);
+		this->pixels[(yAddress * xLength) + xAddress] = pixelValue;
 	}
 
 	uint16_t getPixel(int32_t xAddress, int32_t yAddress, uint8_t channel) const {
@@ -274,7 +274,7 @@ struct FrameEvent: public caer_frame_event {
 		}
 
 		// Get pixel value at specified position.
-		return (le16toh(this->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel]));
+		return (this->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel]);
 	}
 
 	void setPixel(int32_t xAddress, int32_t yAddress, uint8_t channel, uint16_t pixelValue) {
@@ -296,31 +296,29 @@ struct FrameEvent: public caer_frame_event {
 		}
 
 		// Set pixel value at specified position.
-		this->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel] = htole16(pixelValue);
+		this->pixels[(((yAddress * xLength) + xAddress) * channelNumber) + channel] = pixelValue;
 	}
 
 	uint16_t getPixelUnsafe(int32_t xAddress, int32_t yAddress) const noexcept {
 		// Get pixel value at specified position.
-		return (le16toh(this->pixels[(yAddress * caerFrameEventGetLengthX(this)) + xAddress]));
+		return (this->pixels[(yAddress * caerFrameEventGetLengthX(this)) + xAddress]);
 	}
 
 	void setPixelUnsafe(int32_t xAddress, int32_t yAddress, uint16_t pixelValue) noexcept {
 		// Set pixel value at specified position.
-		this->pixels[(yAddress * caerFrameEventGetLengthX(this)) + xAddress] = htole16(pixelValue);
+		this->pixels[(yAddress * caerFrameEventGetLengthX(this)) + xAddress] = pixelValue;
 	}
 
 	uint16_t getPixelUnsafe(int32_t xAddress, int32_t yAddress, uint8_t channel) const noexcept {
 		uint8_t channelNumber = caerFrameEventGetChannelNumber(this);
 		// Get pixel value at specified position.
-		return (le16toh(
-			this->pixels[(((yAddress * caerFrameEventGetLengthX(this)) + xAddress) * channelNumber) + channel]));
+		return (this->pixels[(((yAddress * caerFrameEventGetLengthX(this)) + xAddress) * channelNumber) + channel]);
 	}
 
 	void setPixelUnsafe(int32_t xAddress, int32_t yAddress, uint8_t channel, uint16_t pixelValue) noexcept {
 		uint8_t channelNumber = caerFrameEventGetChannelNumber(this);
 		// Set pixel value at specified position.
-		this->pixels[(((yAddress * caerFrameEventGetLengthX(this)) + xAddress) * channelNumber) + channel] = htole16(
-			pixelValue);
+		this->pixels[(((yAddress * caerFrameEventGetLengthX(this)) + xAddress) * channelNumber) + channel] = pixelValue;
 	}
 
 	uint16_t *getPixelArrayUnsafe() noexcept {

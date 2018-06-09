@@ -180,7 +180,7 @@ static inline caerIMU6EventConst caerIMU6EventPacketGetEventConst(caerIMU6EventP
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerIMU6EventGetTimestamp(caerIMU6EventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -211,7 +211,7 @@ static inline void caerIMU6EventSetTimestamp(caerIMU6Event event, int32_t timest
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**
@@ -283,7 +283,7 @@ static inline void caerIMU6EventInvalidate(caerIMU6Event event, caerIMU6EventPac
  * @return acceleration on the X axis.
  */
 static inline float caerIMU6EventGetAccelX(caerIMU6EventConst event) {
-	return (leflttoh(event->accel_x));
+	return (event->accel_x);
 }
 
 /**
@@ -294,7 +294,7 @@ static inline float caerIMU6EventGetAccelX(caerIMU6EventConst event) {
  * @param accelX acceleration on the X axis.
  */
 static inline void caerIMU6EventSetAccelX(caerIMU6Event event, float accelX) {
-	event->accel_x = htoleflt(accelX);
+	event->accel_x = accelX;
 }
 
 /**
@@ -306,7 +306,7 @@ static inline void caerIMU6EventSetAccelX(caerIMU6Event event, float accelX) {
  * @return acceleration on the Y axis.
  */
 static inline float caerIMU6EventGetAccelY(caerIMU6EventConst event) {
-	return (leflttoh(event->accel_y));
+	return (event->accel_y);
 }
 
 /**
@@ -317,7 +317,7 @@ static inline float caerIMU6EventGetAccelY(caerIMU6EventConst event) {
  * @param accelY acceleration on the Y axis.
  */
 static inline void caerIMU6EventSetAccelY(caerIMU6Event event, float accelY) {
-	event->accel_y = htoleflt(accelY);
+	event->accel_y = accelY;
 }
 
 /**
@@ -329,7 +329,7 @@ static inline void caerIMU6EventSetAccelY(caerIMU6Event event, float accelY) {
  * @return acceleration on the Z axis.
  */
 static inline float caerIMU6EventGetAccelZ(caerIMU6EventConst event) {
-	return (leflttoh(event->accel_z));
+	return (event->accel_z);
 }
 
 /**
@@ -340,7 +340,7 @@ static inline float caerIMU6EventGetAccelZ(caerIMU6EventConst event) {
  * @param accelZ acceleration on the Z axis.
  */
 static inline void caerIMU6EventSetAccelZ(caerIMU6Event event, float accelZ) {
-	event->accel_z = htoleflt(accelZ);
+	event->accel_z = accelZ;
 }
 
 /**
@@ -352,7 +352,7 @@ static inline void caerIMU6EventSetAccelZ(caerIMU6Event event, float accelZ) {
  * @return angular velocity on the X axis (roll).
  */
 static inline float caerIMU6EventGetGyroX(caerIMU6EventConst event) {
-	return (leflttoh(event->gyro_x));
+	return (event->gyro_x);
 }
 
 /**
@@ -363,7 +363,7 @@ static inline float caerIMU6EventGetGyroX(caerIMU6EventConst event) {
  * @param gyroX angular velocity on the X axis (roll).
  */
 static inline void caerIMU6EventSetGyroX(caerIMU6Event event, float gyroX) {
-	event->gyro_x = htoleflt(gyroX);
+	event->gyro_x = gyroX;
 }
 
 /**
@@ -375,7 +375,7 @@ static inline void caerIMU6EventSetGyroX(caerIMU6Event event, float gyroX) {
  * @return angular velocity on the Y axis (pitch).
  */
 static inline float caerIMU6EventGetGyroY(caerIMU6EventConst event) {
-	return (leflttoh(event->gyro_y));
+	return (event->gyro_y);
 }
 
 /**
@@ -386,7 +386,7 @@ static inline float caerIMU6EventGetGyroY(caerIMU6EventConst event) {
  * @param gyroY angular velocity on the Y axis (pitch).
  */
 static inline void caerIMU6EventSetGyroY(caerIMU6Event event, float gyroY) {
-	event->gyro_y = htoleflt(gyroY);
+	event->gyro_y = gyroY;
 }
 
 /**
@@ -398,7 +398,7 @@ static inline void caerIMU6EventSetGyroY(caerIMU6Event event, float gyroY) {
  * @return angular velocity on the Z axis (yaw).
  */
 static inline float caerIMU6EventGetGyroZ(caerIMU6EventConst event) {
-	return (leflttoh(event->gyro_z));
+	return (event->gyro_z);
 }
 
 /**
@@ -409,7 +409,7 @@ static inline float caerIMU6EventGetGyroZ(caerIMU6EventConst event) {
  * @param gyroZ angular velocity on the Z axis (yaw).
  */
 static inline void caerIMU6EventSetGyroZ(caerIMU6Event event, float gyroZ) {
-	event->gyro_z = htoleflt(gyroZ);
+	event->gyro_z = gyroZ;
 }
 
 /**
@@ -421,7 +421,7 @@ static inline void caerIMU6EventSetGyroZ(caerIMU6Event event, float gyroZ) {
  * @return temperature in °C.
  */
 static inline float caerIMU6EventGetTemp(caerIMU6EventConst event) {
-	return (leflttoh(event->temp));
+	return (event->temp);
 }
 
 /**
@@ -432,7 +432,7 @@ static inline float caerIMU6EventGetTemp(caerIMU6EventConst event) {
  * @param temp temperature in °C.
  */
 static inline void caerIMU6EventSetTemp(caerIMU6Event event, float temp) {
-	event->temp = htoleflt(temp);
+	event->temp = temp;
 }
 
 /**

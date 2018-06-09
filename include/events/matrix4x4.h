@@ -193,7 +193,7 @@ static inline caerMatrix4x4EventConst caerMatrix4x4EventPacketGetEventConst(caer
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerMatrix4x4EventGetTimestamp(caerMatrix4x4EventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -224,7 +224,7 @@ static inline void caerMatrix4x4EventSetTimestamp(caerMatrix4x4Event event, int3
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**
@@ -349,7 +349,7 @@ static inline void caerMatrix4x4EventSetScale(caerMatrix4x4Event event, int8_t s
  * @return M00 element.
  */
 static inline float caerMatrix4x4EventGetM00(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[0][0]));
+	return (event->m[0][0]);
 }
 
 /**
@@ -359,7 +359,7 @@ static inline float caerMatrix4x4EventGetM00(caerMatrix4x4EventConst event) {
  * @param x m00 value.
  */
 static inline void caerMatrix4x4EventSetM00(caerMatrix4x4Event event, float x) {
-	event->m[0][0] = htoleflt(x);
+	event->m[0][0] = x;
 }
 
 /**
@@ -370,7 +370,7 @@ static inline void caerMatrix4x4EventSetM00(caerMatrix4x4Event event, float x) {
  * @return M01 element.
  */
 static inline float caerMatrix4x4EventGetM01(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[0][1]));
+	return (event->m[0][1]);
 }
 
 /**
@@ -380,7 +380,7 @@ static inline float caerMatrix4x4EventGetM01(caerMatrix4x4EventConst event) {
  * @param x m01 value.
  */
 static inline void caerMatrix4x4EventSetM01(caerMatrix4x4Event event, float x) {
-	event->m[0][1] = htoleflt(x);
+	event->m[0][1] = x;
 }
 
 /**
@@ -391,7 +391,7 @@ static inline void caerMatrix4x4EventSetM01(caerMatrix4x4Event event, float x) {
  * @return M02 element.
  */
 static inline float caerMatrix4x4EventGetM02(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[0][2]));
+	return (event->m[0][2]);
 }
 
 /**
@@ -401,7 +401,7 @@ static inline float caerMatrix4x4EventGetM02(caerMatrix4x4EventConst event) {
  * @param x m02 value.
  */
 static inline void caerMatrix4x4EventSetM02(caerMatrix4x4Event event, float x) {
-	event->m[0][2] = htoleflt(x);
+	event->m[0][2] = x;
 }
 
 /**
@@ -412,7 +412,7 @@ static inline void caerMatrix4x4EventSetM02(caerMatrix4x4Event event, float x) {
  * @return M01 element.
  */
 static inline float caerMatrix4x4EventGetM03(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[0][3]));
+	return (event->m[0][3]);
 }
 
 /**
@@ -422,7 +422,7 @@ static inline float caerMatrix4x4EventGetM03(caerMatrix4x4EventConst event) {
  * @param x m03 value.
  */
 static inline void caerMatrix4x4EventSetM03(caerMatrix4x4Event event, float x) {
-	event->m[0][3] = htoleflt(x);
+	event->m[0][3] = x;
 }
 
 /**
@@ -433,7 +433,7 @@ static inline void caerMatrix4x4EventSetM03(caerMatrix4x4Event event, float x) {
  * @return M10 element.
  */
 static inline float caerMatrix4x4EventGetM10(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[1][0]));
+	return (event->m[1][0]);
 }
 
 /**
@@ -443,7 +443,7 @@ static inline float caerMatrix4x4EventGetM10(caerMatrix4x4EventConst event) {
  * @param x m10 value.
  */
 static inline void caerMatrix4x4EventSetM10(caerMatrix4x4Event event, float x) {
-	event->m[1][0] = htoleflt(x);
+	event->m[1][0] = x;
 }
 
 /**
@@ -454,7 +454,7 @@ static inline void caerMatrix4x4EventSetM10(caerMatrix4x4Event event, float x) {
  * @return M11 element.
  */
 static inline float caerMatrix4x4EventGetM11(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[1][1]));
+	return (event->m[1][1]);
 }
 
 /**
@@ -464,7 +464,7 @@ static inline float caerMatrix4x4EventGetM11(caerMatrix4x4EventConst event) {
  * @param x m11 value.
  */
 static inline void caerMatrix4x4EventSetM11(caerMatrix4x4Event event, float x) {
-	event->m[1][1] = htoleflt(x);
+	event->m[1][1] = x;
 }
 
 /**
@@ -475,7 +475,7 @@ static inline void caerMatrix4x4EventSetM11(caerMatrix4x4Event event, float x) {
  * @return M12 element.
  */
 static inline float caerMatrix4x4EventGetM12(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[1][2]));
+	return (event->m[1][2]);
 }
 
 /**
@@ -485,7 +485,7 @@ static inline float caerMatrix4x4EventGetM12(caerMatrix4x4EventConst event) {
  * @param x m12 value.
  */
 static inline void caerMatrix4x4EventSetM12(caerMatrix4x4Event event, float x) {
-	event->m[1][2] = htoleflt(x);
+	event->m[1][2] = x;
 }
 
 /**
@@ -496,7 +496,7 @@ static inline void caerMatrix4x4EventSetM12(caerMatrix4x4Event event, float x) {
  * @return M13 element.
  */
 static inline float caerMatrix4x4EventGetM13(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[1][3]));
+	return (event->m[1][3]);
 }
 
 /**
@@ -506,7 +506,7 @@ static inline float caerMatrix4x4EventGetM13(caerMatrix4x4EventConst event) {
  * @param x m13 value.
  */
 static inline void caerMatrix4x4EventSetM13(caerMatrix4x4Event event, float x) {
-	event->m[1][3] = htoleflt(x);
+	event->m[1][3] = x;
 }
 
 /**
@@ -517,7 +517,7 @@ static inline void caerMatrix4x4EventSetM13(caerMatrix4x4Event event, float x) {
  * @return M20 element.
  */
 static inline float caerMatrix4x4EventGetM20(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[2][0]));
+	return (event->m[2][0]);
 }
 
 /**
@@ -527,7 +527,7 @@ static inline float caerMatrix4x4EventGetM20(caerMatrix4x4EventConst event) {
  * @param x M20 value.
  */
 static inline void caerMatrix4x4EventSetM20(caerMatrix4x4Event event, float x) {
-	event->m[2][0] = htoleflt(x);
+	event->m[2][0] = x;
 }
 
 /**
@@ -538,7 +538,7 @@ static inline void caerMatrix4x4EventSetM20(caerMatrix4x4Event event, float x) {
  * @return M21 element.
  */
 static inline float caerMatrix4x4EventGetM21(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[2][1]));
+	return (event->m[2][1]);
 }
 
 /**
@@ -548,7 +548,7 @@ static inline float caerMatrix4x4EventGetM21(caerMatrix4x4EventConst event) {
  * @param x M21 value.
  */
 static inline void caerMatrix4x4EventSetM21(caerMatrix4x4Event event, float x) {
-	event->m[2][1] = htoleflt(x);
+	event->m[2][1] = x;
 }
 
 /**
@@ -559,7 +559,7 @@ static inline void caerMatrix4x4EventSetM21(caerMatrix4x4Event event, float x) {
  * @return M22 element.
  */
 static inline float caerMatrix4x4EventGetM22(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[2][2]));
+	return (event->m[2][2]);
 }
 
 /**
@@ -569,7 +569,7 @@ static inline float caerMatrix4x4EventGetM22(caerMatrix4x4EventConst event) {
  * @param x M22 value.
  */
 static inline void caerMatrix4x4EventSetM22(caerMatrix4x4Event event, float x) {
-	event->m[2][2] = htoleflt(x);
+	event->m[2][2] = x;
 }
 
 /**
@@ -580,7 +580,7 @@ static inline void caerMatrix4x4EventSetM22(caerMatrix4x4Event event, float x) {
  * @return M23 element.
  */
 static inline float caerMatrix4x4EventGetM23(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[2][3]));
+	return (event->m[2][3]);
 }
 
 /**
@@ -590,7 +590,7 @@ static inline float caerMatrix4x4EventGetM23(caerMatrix4x4EventConst event) {
  * @param x M23 value.
  */
 static inline void caerMatrix4x4EventSetM23(caerMatrix4x4Event event, float x) {
-	event->m[2][3] = htoleflt(x);
+	event->m[2][3] = x;
 }
 
 /**
@@ -601,7 +601,7 @@ static inline void caerMatrix4x4EventSetM23(caerMatrix4x4Event event, float x) {
  * @return M30 element.
  */
 static inline float caerMatrix4x4EventGetM30(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[3][0]));
+	return (event->m[3][0]);
 }
 
 /**
@@ -611,7 +611,7 @@ static inline float caerMatrix4x4EventGetM30(caerMatrix4x4EventConst event) {
  * @param x M30 value.
  */
 static inline void caerMatrix4x4EventSetM30(caerMatrix4x4Event event, float x) {
-	event->m[3][0] = htoleflt(x);
+	event->m[3][0] = x;
 }
 
 /**
@@ -622,7 +622,7 @@ static inline void caerMatrix4x4EventSetM30(caerMatrix4x4Event event, float x) {
  * @return M31 element.
  */
 static inline float caerMatrix4x4EventGetM31(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[3][1]));
+	return (event->m[3][1]);
 }
 
 /**
@@ -632,7 +632,7 @@ static inline float caerMatrix4x4EventGetM31(caerMatrix4x4EventConst event) {
  * @param x M31 value.
  */
 static inline void caerMatrix4x4EventSetM31(caerMatrix4x4Event event, float x) {
-	event->m[3][1] = htoleflt(x);
+	event->m[3][1] = x;
 }
 
 /**
@@ -643,7 +643,7 @@ static inline void caerMatrix4x4EventSetM31(caerMatrix4x4Event event, float x) {
  * @return M32 element.
  */
 static inline float caerMatrix4x4EventGetM32(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[3][2]));
+	return (event->m[3][2]);
 }
 
 /**
@@ -653,7 +653,7 @@ static inline float caerMatrix4x4EventGetM32(caerMatrix4x4EventConst event) {
  * @param x M32 value.
  */
 static inline void caerMatrix4x4EventSetM32(caerMatrix4x4Event event, float x) {
-	event->m[3][2] = htoleflt(x);
+	event->m[3][2] = x;
 }
 
 /**
@@ -664,7 +664,7 @@ static inline void caerMatrix4x4EventSetM32(caerMatrix4x4Event event, float x) {
  * @return M33 element.
  */
 static inline float caerMatrix4x4EventGetM33(caerMatrix4x4EventConst event) {
-	return (leflttoh(event->m[3][3]));
+	return (event->m[3][3]);
 }
 
 /**
@@ -674,7 +674,7 @@ static inline float caerMatrix4x4EventGetM33(caerMatrix4x4EventConst event) {
  * @param x M33 value.
  */
 static inline void caerMatrix4x4EventSetM33(caerMatrix4x4Event event, float x) {
-	event->m[3][3] = htoleflt(x);
+	event->m[3][3] = x;
 }
 
 /**

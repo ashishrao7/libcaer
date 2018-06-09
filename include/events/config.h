@@ -186,7 +186,7 @@ static inline caerConfigurationEventConst caerConfigurationEventPacketGetEventCo
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerConfigurationEventGetTimestamp(caerConfigurationEventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -219,7 +219,7 @@ static inline void caerConfigurationEventSetTimestamp(caerConfigurationEvent eve
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**
@@ -335,7 +335,7 @@ static inline void caerConfigurationEventSetParameterAddress(caerConfigurationEv
  * @return configuration parameter.
  */
 static inline uint32_t caerConfigurationEventGetParameter(caerConfigurationEventConst event) {
-	return (I32T(le32toh(event->parameter)));
+	return (event->parameter);
 }
 
 /**
@@ -345,7 +345,7 @@ static inline uint32_t caerConfigurationEventGetParameter(caerConfigurationEvent
  * @param parameter configuration parameter.
  */
 static inline void caerConfigurationEventSetParameter(caerConfigurationEvent event, uint32_t parameter) {
-	event->parameter = I32T(htole32(parameter));
+	event->parameter = parameter;
 }
 
 /**

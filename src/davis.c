@@ -431,7 +431,7 @@ static inline void apsUpdateFrame(davisHandle handle, uint16_t data) {
 		// Normalize the ADC value to 16bit generic depth. This depends on ADC used.
 		pixelValue = pixelValue << (16 - APS_ADC_DEPTH);
 
-		state->aps.frame.pixels[pixelPosition] = htole16(U16T(pixelValue));
+		state->aps.frame.pixels[pixelPosition] = U16T(pixelValue);
 	}
 #endif
 

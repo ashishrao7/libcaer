@@ -175,7 +175,7 @@ static inline caerSampleEventConst caerSampleEventPacketGetEventConst(caerSample
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerSampleEventGetTimestamp(caerSampleEventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -206,7 +206,7 @@ static inline void caerSampleEventSetTimestamp(caerSampleEvent event, int32_t ti
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**

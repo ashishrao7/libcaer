@@ -185,7 +185,7 @@ static inline caerPoint4DEventConst caerPoint4DEventPacketGetEventConst(caerPoin
  * @return this event's 32bit microsecond timestamp.
  */
 static inline int32_t caerPoint4DEventGetTimestamp(caerPoint4DEventConst event) {
-	return (I32T(le32toh(U32T(event->timestamp))));
+	return (event->timestamp);
 }
 
 /**
@@ -216,7 +216,7 @@ static inline void caerPoint4DEventSetTimestamp(caerPoint4DEvent event, int32_t 
 		return;
 	}
 
-	event->timestamp = I32T(htole32(U32T(timestamp)));
+	event->timestamp = timestamp;
 }
 
 /**
@@ -341,7 +341,7 @@ static inline void caerPoint4DEventSetScale(caerPoint4DEvent event, int8_t scale
  * @return X axis measurement.
  */
 static inline float caerPoint4DEventGetX(caerPoint4DEventConst event) {
-	return (leflttoh(event->x));
+	return (event->x);
 }
 
 /**
@@ -351,7 +351,7 @@ static inline float caerPoint4DEventGetX(caerPoint4DEventConst event) {
  * @param x X axis measurement.
  */
 static inline void caerPoint4DEventSetX(caerPoint4DEvent event, float x) {
-	event->x = htoleflt(x);
+	event->x = x;
 }
 
 /**
@@ -362,7 +362,7 @@ static inline void caerPoint4DEventSetX(caerPoint4DEvent event, float x) {
  * @return Y axis measurement.
  */
 static inline float caerPoint4DEventGetY(caerPoint4DEventConst event) {
-	return (leflttoh(event->y));
+	return (event->y);
 }
 
 /**
@@ -372,7 +372,7 @@ static inline float caerPoint4DEventGetY(caerPoint4DEventConst event) {
  * @param y Y axis measurement.
  */
 static inline void caerPoint4DEventSetY(caerPoint4DEvent event, float y) {
-	event->y = htoleflt(y);
+	event->y = y;
 }
 
 /**
@@ -383,7 +383,7 @@ static inline void caerPoint4DEventSetY(caerPoint4DEvent event, float y) {
  * @return Z axis measurement.
  */
 static inline float caerPoint4DEventGetZ(caerPoint4DEventConst event) {
-	return (leflttoh(event->z));
+	return (event->z);
 }
 
 /**
@@ -393,7 +393,7 @@ static inline float caerPoint4DEventGetZ(caerPoint4DEventConst event) {
  * @param z Z axis measurement.
  */
 static inline void caerPoint4DEventSetZ(caerPoint4DEvent event, float z) {
-	event->z = htoleflt(z);
+	event->z = z;
 }
 
 /**
@@ -404,7 +404,7 @@ static inline void caerPoint4DEventSetZ(caerPoint4DEvent event, float z) {
  * @return W axis measurement.
  */
 static inline float caerPoint4DEventGetW(caerPoint4DEventConst event) {
-	return (leflttoh(event->w));
+	return (event->w);
 }
 
 /**
@@ -414,7 +414,7 @@ static inline float caerPoint4DEventGetW(caerPoint4DEventConst event) {
  * @param w W axis measurement.
  */
 static inline void caerPoint4DEventSetW(caerPoint4DEvent event, float w) {
-	event->w = htoleflt(w);
+	event->w = w;
 }
 
 /**
